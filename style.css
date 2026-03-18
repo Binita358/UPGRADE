@@ -1,0 +1,32 @@
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+.course-container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+.course-card{
+    border:1px solid gray;
+    padding:15px;
+    width:250px;
+}
+button:hover{
+    background:green;
+    color:white;
+}
+input[type="radio"]{
+    margin-right:10px;
+}
+nav a{
+    margin-right:15px;
+}
+@media(max-width:768px){
+    .dashboard-grid{
+    grid-template-columns:1fr;
+}
+.course-container{
+    flex-direction:column;
+}}
