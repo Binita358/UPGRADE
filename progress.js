@@ -1,15 +1,15 @@
 const table = document.getElementById("courseTable");
+// Get completed courses
+let completed = JSON.parse(localStorage.getItem("completed")) || [];
 // Fill course table
 courses.forEach(function(c) {
   table.innerHTML +=
     "<tr>" +
     "<td>" + c.name + "</td>" +
     "<td>" + c.lessons.length + "</td>" +
-    "<td>0%</td>" +
+    "<td>" + (completed.includes(c.name) ? "✔ Completed" : "Pending") + "</td>"
     "</tr>";
 });
-// Get completed courses from localStorage
-let completed = JSON.parse(localStorage.getItem("completed")) || [];
 // Calculate progress
 let percent = 0;
 if (courses.length > 0) {
