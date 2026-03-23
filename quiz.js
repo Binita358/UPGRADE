@@ -12,7 +12,7 @@ async function renderQuiz() {
   document.getElementById("loading").style.display = "none";
   data.forEach((q, index) => {
     container.innerHTML += `
-      <div>
+      <div class="card p-3 mb-3 shadow-sm">
         <h5>${q.question}</h5>
         ${q.options.map((o, i) => `
           <label>
@@ -58,11 +58,14 @@ function submitQuiz() {
   document.getElementById("result").innerText =
   `Score: ${score} | ${percent}% | Grade: ${grade} | ${message}`;
     localStorage.setItem("score", percent + "%");
-    // ADD THIS 👇
     let completed = JSON.parse(localStorage.getItem("completed")) || [];
-    if (!completed.includes("JavaScript")) {
-      completed.push("JavaScript");
-    }
-    localStorage.setItem("completed", JSON.stringify(completed));
+
+courses.forEach(c => {
+  if (!completed.includes(c.name)) {
+    completed.push(c.name);
+  }
+});
+
+localStorage.setItem("completed", JSON.stringify(completed));
 }
 renderQuiz();
